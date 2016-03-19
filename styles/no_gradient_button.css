@@ -1,0 +1,9 @@
+.button {
+    composes: button from "./button";
+    background-image: none;
+    background-color: #eee;
+}
+
+.disabled {
+    composes: disabled from "./button";
+}

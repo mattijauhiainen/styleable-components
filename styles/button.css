@@ -1,0 +1,35 @@
+.base {
+    cursor: default;
+    display: flex;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    outline: 0;
+}
+
+.button {
+    composes: base;
+    background-image: linear-gradient(#eee, #ccc);
+    border: 1px solid #999;
+    font-size: 13px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+}
+
+.button:hover {
+    background-image: linear-gradient(#f4f4f4, #d4d4d4);
+}
+
+.button:active {
+    background-image: linear-gradient(#bbb, #ddd);
+    border-color: #777 #999 #999 #777;
+    color: #000;
+}
+
+.disabled,
+.disabled:hover {
+    border: 1px solid #b3b3b3;
+    background-image: linear-gradient(#eee, #ccc);
+    color: #888;
+}
