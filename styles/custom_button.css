@@ -2,6 +2,7 @@
     composes: base from "./button";
     cursor: pointer;
     border: 2px solid lightskyblue;
+    width: 400px;
 }
 
 .button:hover {

@@ -6,7 +6,7 @@ import flashy from './styles/custom_button';
 import noGradient from './styles/no_gradient_button';
 
 const App = () => (
-  <div style={{ width: 200 }}>
+  <div>
     <Button>Default</Button>
     <br />
     <Button styles={flashy}>Styled</Button>
