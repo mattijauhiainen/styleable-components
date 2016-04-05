@@ -53,7 +53,7 @@ class Button extends React.Component {
         onKeyDown={::this.handleKeyDown}
         onFocus={this.props.onFocus}
       >
-        {this.props.children}
+        <span className={styles.mysterySpan}>XXX___</span>{this.props.children}
       </div>
     );
   }

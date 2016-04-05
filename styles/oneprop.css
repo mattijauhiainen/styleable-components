@@ -1,0 +1,4 @@
+.button {
+    composes: button from "./button";
+    color: red;
+}

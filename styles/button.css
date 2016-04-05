@@ -18,6 +18,10 @@
     text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
 }
 
+.mysterySpan {
+    color: pink;
+}
+
 .button:hover {
     background-image: linear-gradient(#f4f4f4, #d4d4d4);
 }
