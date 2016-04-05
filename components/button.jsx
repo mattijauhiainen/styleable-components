@@ -8,7 +8,8 @@ class Button extends React.Component {
     onClick: PropTypes.func,
     onMouseDown: PropTypes.func,
     onMouseUp: PropTypes.func,
-    styles: PropTypes.object
+    styles: PropTypes.object,
+    complementaryStyles: PropTypes.object
   };
 
   static defaultProps = {
@@ -38,7 +39,8 @@ class Button extends React.Component {
   }
 
   render() {
-    const { styles, disabled, onClick } = this.props;
+    const styles = { ...this.props.styles, ...this.props.complementaryStyles };
+    const { disabled, onClick } = this.props;
     const classes = [styles.button];
     if (disabled) classes.push(styles.disabled);
 

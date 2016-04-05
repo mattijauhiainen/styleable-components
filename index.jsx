@@ -14,7 +14,7 @@ const App = () => (
     <br />
     <Button styles={noGradient}>Woohoo</Button>
     <br />
-    <Button styles={oneProp}>Meh</Button>
+    <Button complementaryStyles={oneProp}>Meh</Button>
   </div>
 );
 
