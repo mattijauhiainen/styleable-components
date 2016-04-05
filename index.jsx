@@ -1,18 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { StyleSheet, css } from 'aphrodite';
 
-import Button from './components/button';
-import flashy from './styles/custom_button';
-import noGradient from './styles/no_gradient_button';
+import Button, { buttonStyles } from './components/button';
 
 const App = () => (
   <div>
     <Button>Default</Button>
-    <br />
-    <Button styles={flashy}>Styled</Button>
-    <br />
-    <Button styles={noGradient}>Woohoo</Button>
+    <br /><br />
+    <Button styles={styles}>Styled</Button>
+    <br /><br />
+    <Button disabled={true}>Woohoo</Button>
   </div>
 );
+
+const styles= StyleSheet.create({
+  button: {
+    ...buttonStyles.base._definition,
+    border: '2px solid lightskyblue',
+    cursor: 'pointer',
+    width: 400,
+
+    ':hover': {
+      backgroundColor: 'pink'
+    },
+
+    ':active': {
+      backgroundColor: 'red'
+    }
+  }
+});
 
 ReactDOM.render(<App />, document.getElementById('main'));
