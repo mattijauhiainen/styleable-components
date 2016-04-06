@@ -1,34 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { StyleSheet, css } from 'aphrodite';
 
-import Button, { buttonStyles } from './components/button';
+import Button, { buttonStyleDef } from './components/button';
+import { StyleSheet, Presets, LookRoot } from 'react-look';
 
 const App = () => (
   <div>
     <Button>Default</Button>
     <br /><br />
-    <Button styles={styles}>Styled</Button>
+    <Button styles={identicalStyles}>Default</Button>
+    <br /><br />
+    <Button styles={pinkyStyles}>Styled</Button>
     <br /><br />
     <Button disabled={true}>Woohoo</Button>
+    <br /><br />
+    <Button styles={funkyStyles}>Woohoo</Button>
   </div>
 );
 
-const styles= StyleSheet.create({
+const identicalStyles = StyleSheet.create(buttonStyleDef);
+const pinkyStyles = StyleSheet.create({
+  ...buttonStyleDef,
   button: {
-    ...buttonStyles.base._definition,
+    ...buttonStyleDef.button,
     border: '2px solid lightskyblue',
     cursor: 'pointer',
     width: 400,
-
     ':hover': {
       backgroundColor: 'pink'
     },
-
     ':active': {
       backgroundColor: 'red'
     }
   }
 });
 
-ReactDOM.render(<App />, document.getElementById('main'));
+const funkyStyles = StyleSheet.create({
+  ...buttonStyleDef,
+  button: {
+    ...buttonStyleDef.button,
+    width: (props, state) => state.width
+  }
+})
+const config = Presets['react-dom'];
+
+ReactDOM.render(<LookRoot config={config}><App /></LookRoot>, document.getElementById('main'));

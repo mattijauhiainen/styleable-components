@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import look, { StyleSheet  } from 'react-look';
+
+const c = StyleSheet.combineStyles;
 
 class Button extends React.Component {
   static propTypes = {
@@ -9,6 +11,10 @@ class Button extends React.Component {
     onMouseUp: PropTypes.func,
     styles: PropTypes.object
   };
+
+  state = {
+    width: 300
+  }
 
   handleKeyDown(event) {
     if (event.keyCode === 32) { // space
@@ -30,6 +36,25 @@ class Button extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.timer = setInterval(::this.tick, 50);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  tick() {
+    const width = this.state.width;
+    let newWidth;
+    if (width > 800) {
+      newWidth = width - 5;
+    } else {
+      newWidth = width + 5;
+    }
+    this.setState({ width: newWidth });
+  }
+
   render() {
     const { disabled } = this.props;
     const styles = this.props.styles || buttonStyles;
@@ -40,7 +65,7 @@ class Button extends React.Component {
         tabIndex="-1"
         onMouseDown={::this.handleMouseDown}
         onMouseUp={::this.handleMouseUp}
-        className={css(styles.base, styles.button, disabled && styles.disabled)}
+        className={c(styles.base, styles.button, disabled && styles.disabled)}
         onClick={!this.props.disabled && this.props.onClick}
         onKeyDown={::this.handleKeyDown}
         onFocus={this.props.onFocus}
@@ -57,7 +82,7 @@ const disabled = {
   color: '#888'
 };
 
-export const buttonStyles = StyleSheet.create({
+export const buttonStyleDef = {
   base: {
     cursor: 'default',
     display: 'inline-flex',
@@ -91,6 +116,7 @@ export const buttonStyles = StyleSheet.create({
     ':hover': disabled,
     ':active': disabled
   }
-});
+};
+export const buttonStyles = StyleSheet.create(buttonStyleDef);
 
-export default Button;
+export default look(Button);
